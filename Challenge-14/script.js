@@ -29,3 +29,56 @@ document
 (function () {
   console.log("You can call me only once!!");
 })();
+
+// Closures
+let f;
+const g = function () {
+  const a = 5;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 10;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+
+//F is a different function as we re-assigned its value
+h();
+f();
+//Example 2
+const porPassengers = function (n, time) {
+  setTimeout(function () {
+    console.log(`We are boarding all ${n} passengers`);
+
+    console.log(`There are 3 groups, each group is ${n / 3}`);
+  }, time * 1000);
+
+  console.log(`Will start boarding in ${time} seconds`);
+};
+
+porPassengers(30, 3);
+
+//Challenge 14, Clousers
+(function () {
+  const header = document.querySelector(".header");
+  header.style.color = "red";
+  document.body.addEventListener("click", function () {
+    header.style.color = "blue";
+  });
+})();
+
+function Parent() {
+  let youCanSeeMe = "hello";
+  return function hasAccess() {
+    console.log(youCanSeeMe);
+  };
+}
+Parent();
+hasAccess();
