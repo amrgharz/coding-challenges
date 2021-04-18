@@ -29,6 +29,15 @@ const calcAverageHumanAge = function (arr) {
 
 calcAverageHumanAge(data1);
 
+//calcAvarageHumanAge
+const calcAvarageHumanAge1 = arr =>
+  arr
+    .map(age => (age < 18 ? (age = age * 2) : (age = 16 + age * 4)))
+    .filter(age => age > 18)
+    .reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
+console.log(calcAvarageHumanAge1(data1));
+console.log(calcAvarageHumanAge1(data2));
+
 const calcAverageArrow = function (arr) {
   const humanAge = arr.map(age =>
     age <= 2 ? (age = age * 2) : (age = 16 + age * 4)
